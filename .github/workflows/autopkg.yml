@@ -56,7 +56,7 @@ jobs:
     - name: Checkout your Munki LFS repo
       uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c #v3.3.0
       with:
-        repository: https://github.com/m-a-b-u/munki
+        repository: m-a-b-u/munki
         # GitHub deploy key with read/write access to repo
         ssh-key: ${{ secrets.CPE_MUNKI_LFS_DEPLOY_KEY }}
         fetch-depth: 1
