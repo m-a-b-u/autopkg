@@ -259,68 +259,6 @@ def import_icons():
     git_run(["commit", "-m", "Added new icons"])
     git_run(["push", "--set-upstream", "origin", f"{branch_name}"])
 
-
-def slack_alert(recipe, opts):
-    if opts.debug:
-        print("Debug: skipping Slack notification - debug is enabled!")
-        return
-
-    if SLACK_WEBHOOK is None:
-        print("Skipping slack notification - webhook is missing!")
-        return
-
-    if not recipe.verified:
-        task_title = f"{ recipe.name } failed trust verification"
-        task_description = recipe.results["message"]
-    elif recipe.error:
-        task_title = f"Failed to import { recipe.name }"
-        if not recipe.results["failed"]:
-            task_description = "Unknown error"
-        else:
-            task_description = ("Error: {} \n" "Traceback: {} \n").format(
-                recipe.results["failed"][0]["message"],
-                recipe.results["failed"][0]["traceback"],
-            )
-
-            if "No releases found for repo" in task_description:
-                # Just no updates
-                return
-    elif recipe.updated:
-        task_title = "Imported %s %s" % (recipe.name, str(recipe.updated_version))
-        task_description = (
-            "*Catalogs:* %s \n" % recipe.results["imported"][0]["catalogs"]
-            + "*Package Path:* `%s` \n" % recipe.results["imported"][0]["pkg_repo_path"]
-            + "*Pkginfo Path:* `%s` \n" % recipe.results["imported"][0]["pkginfo_path"]
-        )
-    else:
-        # Also no updates
-        return
-
-    response = requests.post(
-        SLACK_WEBHOOK,
-        data=json.dumps(
-            {
-                "attachments": [
-                    {
-                        "username": "Autopkg",
-                        "as_user": True,
-                        "title": task_title,
-                        "color": "warning" if not recipe.verified else "good" if not recipe.error else "danger",
-                        "text": task_description,
-                        "mrkdwn_in": ["text"],
-                    }
-                ]
-            }
-        ),
-        headers={"Content-Type": "application/json"},
-    )
-    if response.status_code != 200:
-        raise ValueError(
-            "Request to slack returned an error %s, the response is:\n%s"
-            % (response.status_code, response.text)
-        )
-
-
 def main():
     parser = OptionParser(description="Wrap AutoPkg with git support.")
     parser.add_option(
@@ -365,7 +303,6 @@ def main():
     recipes = parse_recipes(recipes)
     for recipe in recipes:
         handle_recipe(recipe, opts)
-        slack_alert(recipe, opts)
         if not opts.disable_verification:
             if not recipe.verified:
                 failures.append(recipe)
