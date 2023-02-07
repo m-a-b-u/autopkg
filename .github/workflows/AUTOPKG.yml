@@ -10,10 +10,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install Homebrew
+    - name: Download Autopkg
       run: |
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        curl -LJO https://github.com/autopkg/autopkg/releases/download/v2.7.2/autopkg-2.7.2.pkg
 
     - name: Install Autopkg
       run: |
-        brew install autopkg
+        sudo installer -pkg autopkg-2.7.2.pkg -target /
