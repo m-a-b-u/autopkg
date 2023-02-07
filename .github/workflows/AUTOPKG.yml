@@ -17,3 +17,11 @@ jobs:
     - name: Install Autopkg
       run: |
         sudo installer -pkg autopkg-2.7.2.pkg -target /
+        
+    - name: Add Repo For JamfUploader Processor
+      run: |
+        autopkg repo-add grahampugh-recipes
+        
+    - name: Add Repo For Testing Purpose
+      run: |
+        autopkg repo-add killahquam-recipes
