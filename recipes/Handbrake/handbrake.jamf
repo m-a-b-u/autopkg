@@ -3,7 +3,7 @@
 <plist version="1.0">
 	<dict>
 		<key>Comment</key>
-		<string>Recipe automatically generated from com.github.jss-recipes.jss.VisualStudioCode by JamfRecipeMaker</string>
+		<string>Recipe for uploading handbrake to jamf pro</string>
 		<key>Identifier</key>
 		<string>com.42bit.autopkg.jamf.handbrake</string>
 		<key>Input</key>
@@ -11,11 +11,11 @@
 			<key>CATEGORY</key>
 			<string>Productivity</string>
 			<key>GROUP_NAME</key>
-			<string>Visual Studio Code-update-smart</string>
+			<string>Handbrake-update-smart</string>
 			<key>GROUP_TEMPLATE</key>
 			<string>JamfSmartGroupTemplate.xml</string>
 			<key>NAME</key>
-			<string>Visual Studio Code</string>
+			<string>Handbrake</string>
 			<key>POLICY_CATEGORY</key>
 			<string>Testing</string>
 			<key>POLICY_NAME</key>
@@ -23,7 +23,7 @@
 			<key>POLICY_TEMPLATE</key>
 			<string>JamfPolicyTemplate.xml</string>
 			<key>SELF_SERVICE_DESCRIPTION</key>
-			<string>Visual Studio Code is a source code editor which includes support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.</string>
+			<string>Handbrake video software</string>
 			<key>SELF_SERVICE_DISPLAY_NAME</key>
 			<string>Install Latest %NAME%</string>
 			<key>SELF_SERVICE_ICON</key>
