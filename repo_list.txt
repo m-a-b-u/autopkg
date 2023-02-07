@@ -1,2 +1,0 @@
-https://github.com/m-a-b-u/recipes
-https://github.com/hjuutilainen/autopkg-virustotalanalyzer
