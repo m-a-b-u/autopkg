@@ -25,3 +25,14 @@ jobs:
     - name: Add Repo For Testing Purpose
       run: |
         autopkg repo-add killahquam-recipes
+        
+    - name: Configure Autopkg
+      run: |
+        defaults write ~/Library/Preferences/com.github.autopkg.plist JSS_URL "${{ secrets.JSS_URL }}"
+        defaults write ~/Library/Preferences/com.github.autopkg.plist API_USERNAME ${{ secrets.API_USERNAME }}
+        defaults write ~/Library/Preferences/com.github.autopkg.plist API_PASSWORD ${{ secrets.API_PASSWORD }}
+    
+    - name: Do a testrun
+      run: |
+        autopkg run -v VisualStudioCode.jamf
+
