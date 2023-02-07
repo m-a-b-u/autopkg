@@ -1,0 +1,19 @@
+name: AUTOPKG
+
+on:
+  workflow_dispatch:
+jobs:
+  install_autopkg:
+    runs-on: macOS-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Homebrew
+      run: |
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+    - name: Install Autopkg
+      run: |
+        brew install autopkg
