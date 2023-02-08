@@ -34,4 +34,6 @@ jobs:
     
     - name: Do a testrun
       run: |
+        cd /Users/runner/Library/AutoPkg/RecipeRepos/com.github.m-a-b-u.recipes
+        ls -altr
         autopkg run -v handbrake.jamf
