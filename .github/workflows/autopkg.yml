@@ -30,6 +30,7 @@ jobs:
       run: |
         autopkg repo-add https://github.com/autopkg/rtrouton-recipes    
         autopkg repo-add https://github.com/autopkg/recipes
+        autopkg repo-add https://github.com/autopkg/dataJAR-recipes
         
         
     - name: Configure Autopkg
@@ -41,4 +42,4 @@ jobs:
     - name: Do a testrun
       run: |
         cd /Users/runner/Library/AutoPkg/RecipeRepos/com.github.m-a-b-u.recipes
-        autopkg run -v handbrake.jamf cyberduck.jamf chrome.jamf vlc.jamf wireshark.jamf
+        autopkg run -v handbrake.jamf cyberduck.jamf chrome.jamf vlc.jamf wireshark.jamf figma.jamf adobecreativecloud.jamf
