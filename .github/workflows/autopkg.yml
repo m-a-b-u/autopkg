@@ -22,9 +22,15 @@ jobs:
       run: |
         autopkg repo-add grahampugh-recipes
         
-    - name: Add Repo For Testing Purpose
+    - name: Add Private Repo
       run: |
         autopkg repo-add https://github.com/m-a-b-u/recipes/
+        
+    - name: Add Other Parent Repos For Testing Purpose
+      run: |
+        autopkg repo-add https://github.com/autopkg/rtrouton-recipes    
+        autopkg repo-add https://github.com/autopkg/recipes
+        
         
     - name: Configure Autopkg
       run: |
@@ -36,4 +42,4 @@ jobs:
       run: |
         cd /Users/runner/Library/AutoPkg/RecipeRepos/com.github.m-a-b-u.recipes
         ls -altr
-        autopkg run -v handbrake.jamf
+        autopkg run -v handbrake.jamf cyberduck.jamf
