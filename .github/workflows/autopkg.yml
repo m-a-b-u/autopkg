@@ -24,7 +24,7 @@ jobs:
         
     - name: Add Repo For Testing Purpose
       run: |
-        autopkg repo-add https://github.com/m-a-b-u/autopkg/
+        autopkg repo-add https://github.com/m-a-b-u/recipes/
         
     - name: Configure Autopkg
       run: |
@@ -34,5 +34,4 @@ jobs:
     
     - name: Do a testrun
       run: |
-        autopkg list-recipes
         autopkg run -v handbrake.jamf
